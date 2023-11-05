@@ -1,4 +1,7 @@
 # キャッシュポリシー
+data "aws_cloudfront_cache_policy" "caching_disabled" {
+  name = "Managed-CachingDisabled"
+}
 resource "aws_cloudfront_cache_policy" "application" {
   name        = "${var.service_name}-${var.short_environment}-application"
   comment     = ""
@@ -70,4 +73,9 @@ resource "aws_cloudfront_response_headers_policy" "default" {
       }
     }
   }
+
+  # もしかしたら未指定だと怒られるかもしれない
+  # security_headers_config {
+    
+  # }
 }
