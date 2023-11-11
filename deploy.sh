@@ -24,7 +24,17 @@ if [ "$ENVIRONMENT_ARG" = "production" ]; then
     fi
 fi
 
+# functionsのコードをminifyして環境毎のディレクトリに配置
+docker-compose run --rm minifier -r -o $ENVIRONMENT_ARG/cloudfront/minified/functions/ edge_logic/functions/
+
+# Lambda@edgeのコードをビルドして環境毎のディレクトリに配置
+for DIR in ./edge_logic/lambda_edge/*/; do
+    (cd $DIR && ./build.sh)
+    # 気になる場合は毎回消す
+    # rm -rf $ENVIRONMENT_ARG/cloudfront/lambda_src/*
+    cp -r -- $DIR/*/ $ENVIRONMENT_ARG/cloudfront/lambda_src/
+done
+
 docker-compose run --rm terraform bash -c "cd ./$ENVIRONMENT_ARG && terragrunt run-all plan"
 
 docker-compose run --rm terraform bash -c "cd ./$ENVIRONMENT_ARG && terragrunt run-all apply"
-

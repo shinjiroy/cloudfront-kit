@@ -39,3 +39,6 @@ terraform.rc
 
 # Note: 実際に使う時lockファイルはignoreしない
 .terraform.lock.hcl
+
+**/minified/functions
+**/lambda_src/*/*
