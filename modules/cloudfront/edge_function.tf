@@ -26,8 +26,8 @@ resource "aws_iam_role" "files_viewer" {
 }
 data "archive_file" "files_viewer_src" {
   type        = "zip"
-  source_file = "lambda.js"
-  output_path = "lambda_function_payload.zip"
+  source_dir  = var.files_viewer_src_path
+  output_path = "${var.files_viewer_src_path}/../viewer.zip"
 }
 resource "aws_lambda_function" "files_viewer" {
   provider         = aws.virginia

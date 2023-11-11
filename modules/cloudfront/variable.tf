@@ -30,6 +30,10 @@ variable "hoge_application_domain_name" {
   type = string
 }
 
+variable "files_viewer_src_path" {
+  type = string
+}
+
 variable "application_default_function_path" {
   type = string
 }
