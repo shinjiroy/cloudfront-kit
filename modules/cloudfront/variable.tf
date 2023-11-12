@@ -38,6 +38,6 @@ variable "application_default_function_path" {
   type = string
 }
 
-variable "application_web_acl_id" {
+variable "hoge_web_acl_id" {
   type = string
 }

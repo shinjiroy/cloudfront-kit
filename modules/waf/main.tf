@@ -1,5 +1,5 @@
-resource "aws_wafv2_web_acl" "application" {
-  name        = "${var.service_name}-${var.short_environment}-cloudfront-application"
+resource "aws_wafv2_web_acl" "hoge" {
+  name        = "${var.service_name}-${var.short_environment}-cloudfront-hoge"
   description = ""
   scope       = "CLOUDFRONT"
   provider    = aws.virginia
@@ -32,7 +32,7 @@ resource "aws_wafv2_web_acl" "application" {
 
   visibility_config {
     cloudwatch_metrics_enabled = true
-    metric_name                = "${title(var.service_name)}${title(var.short_environment)}CloudfrontApplicationWebACLMetric"
+    metric_name                = "${title(var.service_name)}${title(var.short_environment)}CloudfrontHogeWebACLMetric"
     sampled_requests_enabled   = false
   }
 }
