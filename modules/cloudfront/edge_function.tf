@@ -27,7 +27,7 @@ resource "aws_iam_role" "files_viewer" {
 data "archive_file" "files_viewer_src" {
   type        = "zip"
   source_dir  = var.files_viewer_src_path
-  output_path = "${var.files_viewer_src_path}/.zip"
+  output_path = "${var.files_viewer_src_path}.zip"
 }
 resource "aws_lambda_function" "files_viewer" {
   provider         = aws.virginia
