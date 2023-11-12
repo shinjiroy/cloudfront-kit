@@ -13,19 +13,25 @@ resource "aws_cloudfront_distribution" "www_hoge_com" {
   custom_error_response {
     error_code         = 403
     response_code      = 403
-    response_page_path = "/error/403.html"
+    response_page_path = "/error/forbidden.html"
   }
 
   custom_error_response {
     error_code         = 404
     response_code      = 404
-    response_page_path = "/error/404.html"
+    response_page_path = "/error/not_found.html"
+  }
+
+  custom_error_response {
+    error_code         = 503
+    response_code      = 503
+    response_page_path = "/error/server_error.html"
   }
 
   custom_error_response {
     error_code         = 504
     response_code      = 504
-    response_page_path = "/error/504.html"
+    response_page_path = "/error/server_error.html"
   }
 
   default_cache_behavior {
