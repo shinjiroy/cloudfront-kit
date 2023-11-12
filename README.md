@@ -11,7 +11,7 @@ CloudFrontをTerragruntで書くならこんな感じの構成はいかがでし
 - Docker Compose
   - バージョンは2以上で動くと思います。
 
-## デプロイ手順
+## 想定デプロイ手順
 
 `deploy.sh {staging or production}` を実行。
 
