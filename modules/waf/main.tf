@@ -1,6 +1,6 @@
 resource "aws_wafv2_web_acl" "hoge" {
   name        = "${var.service_name}-${var.short_environment}-cloudfront-hoge"
-  description = ""
+  description = "web acl for cloudfront"
   scope       = "CLOUDFRONT"
   provider    = aws.virginia
 

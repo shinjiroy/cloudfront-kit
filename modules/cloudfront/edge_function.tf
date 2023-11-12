@@ -21,7 +21,7 @@ resource "aws_iam_role" "files_viewer" {
   name               = "${var.service_name}-${var.short_environment}-files-viewer"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
   managed_policy_arns = [
-    "arn:aws:iam:policy/service-role/AWSLambdaBasicExecutionRole",
+    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
   ]
 }
 data "archive_file" "files_viewer_src" {
@@ -36,7 +36,7 @@ resource "aws_lambda_function" "files_viewer" {
   description      = ""
   role             = aws_iam_role.files_viewer.arn
   handler          = "index.handler"
-  source_code_hash = data.archive_file.files_viewer.output_base64sha256
+  source_code_hash = data.archive_file.files_viewer_src.output_base64sha256
   runtime          = "nodejs18.x"
   publish          = true
   memory_size      = 128 # ビューアトリガーの制限
