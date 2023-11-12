@@ -42,3 +42,4 @@ terraform.rc
 
 **/minified/functions
 **/lambda_src/*/*
+**/lambda_src/*.zip
