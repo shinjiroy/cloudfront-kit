@@ -8,7 +8,7 @@ resource "aws_cloudfront_distribution" "www_hoge_com" {
   price_class         = local.distribution_price_class
   retain_on_delete    = false
   wait_for_deployment = true
-  web_acl_id          = null
+  web_acl_id          = var.application_web_acl_id
 
   custom_error_response {
     error_code         = 403

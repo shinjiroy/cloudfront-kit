@@ -7,6 +7,13 @@ terraform {
   source = "/apps/modules//cloudfront"
 }
 
+dependency "waf" {
+  config_path = "../waf"
+  mock_outputs = {
+    application_web_acl_id = "application-web-acl-id"
+  }
+}
+
 locals {
   root_vars         = include.root.locals
   environment       = local.root_vars.environment
@@ -28,4 +35,5 @@ inputs = {
   hoge_application_domain_name          = "hoge-alb-xxxxxx.xxxxx.elb.amazonaws.com"
   files_viewer_src_path                 = "${get_terragrunt_dir()}/lambda_src/viewer"
   application_default_function_path     = "${get_terragrunt_dir()}/minified/functions/hoge_default.js"
+  application_web_acl_id                = dependency.waf.outputs.application_web_acl_id
 }

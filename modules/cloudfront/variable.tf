@@ -37,3 +37,7 @@ variable "files_viewer_src_path" {
 variable "application_default_function_path" {
   type = string
 }
+
+variable "application_web_acl_id" {
+  type = string
+}
